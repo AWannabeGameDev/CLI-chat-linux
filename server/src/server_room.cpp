@@ -66,11 +66,15 @@ void Server::connectionThread()
 
 		try
 		{
+			printf("Receiving username length...\n");
+
 			username.nntLength = recvUint16(newClientSocket);
 			if(username.nntLength > MAX_NNT_USERNAME_SIZE)
 			{
 				throw DisconnectFlag {};
 			}
+
+			printf("Receiving username...\n");
 
 			recvFull(newClientSocket, username.ntText.data(), username.nntLength, 0);
 		}
