@@ -40,16 +40,30 @@ int getPort(const sockaddr* address)
 
 void recvFull(uint64_t socket, char* buffer, int recvLength, int flags)
 {
-	for(int recved {0}; recved != recvLength; )
+	try
 	{
-		int currentRecved {wsa::recv(socket, buffer + recved, recvLength - recved, flags)};
-
-		if(currentRecved == 0)
+		for(int recved {0}; recved != recvLength; )
 		{
-			throw DisconnectFlag {}; 
-		}
+			int currentRecved {wsa::recv(socket, buffer + recved, recvLength - recved, flags)};
 
-		recved += currentRecved;
+			if(currentRecved == 0)
+			{
+				throw DisconnectFlag {}; 
+			}
+
+			recved += currentRecved;
+		}
+	}
+	catch(int errorCode)
+	{
+		if(errorCode == ECONNRESET)
+		{
+			throw DisconnectFlag {};
+		}
+		else
+		{
+			throw;
+		}
 	}
 }
 
