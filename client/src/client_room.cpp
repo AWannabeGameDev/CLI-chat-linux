@@ -67,7 +67,7 @@ void Client::sendThread()
 
 void Client::recvThread()
 {
-	while(!_shutdown)
+	while(!(_shutdown || _peerClosed))
 	{
 		int socketAction {poll(&_socketPoll, 1, POLL_TIMEOUT)};
 
