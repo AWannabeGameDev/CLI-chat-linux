@@ -3,7 +3,7 @@
 
 #include <sys/socket.h>
 #include <util/util.hpp>
-#include <util/wsa_wrapper.hpp>
+#include <util/sock_wrapper.hpp>
 #include <util/protocol_structs.hpp>
 
 #include "client_room.hpp"

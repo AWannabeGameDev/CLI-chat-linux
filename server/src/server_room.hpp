@@ -7,7 +7,7 @@
 #include <sys/poll.h>
 
 #include <util/terminal_text_box.hpp>
-#include <util/wsa_wrapper.hpp>
+#include <util/sock_wrapper.hpp>
 #include <util/protocol_structs.hpp>
 
 class Server

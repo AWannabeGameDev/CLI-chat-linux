@@ -3,7 +3,7 @@
 #include <unistd.h>
 
 #include <util/util.hpp>
-#include <util/wsa_wrapper.hpp>
+#include <util/sock_wrapper.hpp>
 #include <util/constants.hpp>
 #include <util/protocol_structs.hpp>
 

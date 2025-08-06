@@ -2,7 +2,7 @@
 #include <cstdint>
 #include <errno.h>
 
-#include "util/wsa_wrapper.hpp"
+#include "util/sock_wrapper.hpp"
 
 static void throwError(const char* errorStr)
 {
@@ -11,7 +11,7 @@ static void throwError(const char* errorStr)
 	throw error;
 }
 
-void wsa::getAddrInfo(const char* nodeName, const char* serviceName, const addrinfo* hints, addrinfo** result)
+void sock::getAddrInfo(const char* nodeName, const char* serviceName, const addrinfo* hints, addrinfo** result)
 {
 	int returnCode {::getaddrinfo(nodeName, serviceName, hints, result)};
 

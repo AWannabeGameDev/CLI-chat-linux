@@ -44,7 +44,7 @@ void recvFull(uint64_t socket, char* buffer, int recvLength, int flags)
 	{
 		for(int recved {0}; recved != recvLength; )
 		{
-			int currentRecved {wsa::recv(socket, buffer + recved, recvLength - recved, flags)};
+			int currentRecved {sock::recv(socket, buffer + recved, recvLength - recved, flags)};
 
 			if(currentRecved == 0)
 			{
@@ -71,7 +71,7 @@ void sendFull(uint64_t socket, const char* buffer, int sendLength, int flags)
 {
 	for(int sent {0}; sent != sendLength; )
 	{
-		sent += wsa::send(socket, buffer + sent, sendLength - sent, flags);
+		sent += sock::send(socket, buffer + sent, sendLength - sent, flags);
 	}
 }
 

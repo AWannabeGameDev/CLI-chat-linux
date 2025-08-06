@@ -4,7 +4,7 @@
 #include <sys/socket.h>
 #include <netdb.h>
 
-namespace wsa
+namespace sock
 {
 	void getAddrInfo(const char* pNodeName, const char* pServiceName, const addrinfo* pHints, addrinfo** ppResult);
 	uint64_t socket(int af, int type, int protocol);
