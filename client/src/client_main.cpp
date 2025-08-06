@@ -4,22 +4,15 @@
 
 int main(int argc, char* argv[])
 {
-	std::string_view ip;
-	std::string_view port;
-	std::string_view username;
-
 	if(argc != 4)
 	{
-		ip = std::string_view {"192.168.1.100"};
-		port = std::string_view {"3490"};
-		username = std::string_view {"New Client"};
+		printf("Usage : [client_binary_name] [server_ip] [server_port] [username]");
+		return 1;
 	}
-	else
-	{
-		ip = std::string_view {argv[1]};
-		port = std::string_view {argv[2]};
-		username = std::string_view {argv[3]};
-	}
+	
+	std::string_view ip {argv[1]};
+	std::string_view port {argv[2]};
+	std::string_view username {argv[3]};
 
 	Client client {ip, port, username};
 
