@@ -31,6 +31,8 @@ Clients connected to the same server are in a chat room and can chat with each o
 
 The basic idea is that the server stores all the messages it receives from different clients, and then broadcasts each one to each client. The client doesn't distinguish between its own messages and other messages. It simply sends message+data to the server and prints out whatever the server sends.
 
+The server uses two threads: one for listening for incoming connection requests and another for handling messaging between connected clients. The chat thread uses polling for handling multiple connections. Similarly, the client uses a thread each for sending messagesand receiving messages from the server. Both the client and the server uses mutexes to prevent race conditions with their respective internal states.
+
 ### Server-client connection protocol
 
 Immediately after a TCP connection is established, the client sends the length of their username followed by their username for the server to store.
